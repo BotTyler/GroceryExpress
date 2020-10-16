@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">GroceryExpress</string>
     <string name="CreateNewListBtnText">Create List</string>
-    <string-array name="ItemList">
+    <string name="ListName">NullName</string>
+    <string name="AddItemBtnText">Add Item</string>
+    <string-array name="GroceryList">
         <item>Tech Items</item>
         <item>Grocery Items</item>
         <item>Snacks</item>
@@ -39,5 +41,11 @@
         <item>Grocery Items</item>
         <item>Snacks</item>
     </string-array>
-    <string name="ListName">NullName</string>
+
+    <string-array name="ItemList">
+        <item>Graphics Card</item>
+        <item>Soccer Ball</item>
+        <item>football</item>
+        <item>Wireless mouse</item>
+    </string-array>
 </resources>

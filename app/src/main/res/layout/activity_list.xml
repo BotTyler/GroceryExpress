@@ -8,9 +8,10 @@
     tools:context=".ListActivity">
 
     <TextView
+        android:id="@+id/ListTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="left"
+        android:layout_gravity="center"
         android:layout_marginTop="25dp"
         android:layout_marginBottom="25dp"
 
@@ -18,12 +19,32 @@
         android:textColor="@color/TitleColor"
         android:textSize="50sp" />
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:entries="@array/ItemList"
-        android:layout_weight="1"/>
-
+<TableLayout
+    android:id="@+id/ItemLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="3"
+    android:layout_weight="1"
+    android:layout_marginRight="10dp"
+    android:layout_marginLeft="10dp"
+    >
+</TableLayout>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Estimated Total"
+        android:layout_gravity="left
+"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$1236412345"
+        android:layout_gravity="center"/>
+</LinearLayout>
 
     <Button
         android:layout_width="wrap_content"
@@ -31,6 +52,6 @@
         android:layout_gravity="center"
         android:layout_marginBottom="25dp"
         android:layout_marginTop="25dp"
-        android:text="@string/CreateNewListBtnText"/>
+        android:text="@string/AddItemBtnText"/>
 
 </LinearLayout>
