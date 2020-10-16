@@ -78,28 +78,36 @@
         android:layout_margin="5sp">
 
         <ListView
+            android:id="@+id/StoreListView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:entries="@array/NameList" />
+            android:entries="@array/NameList"
+            />
 
         <ListView
+            android:id="@+id/PriceListView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:entries="@array/PriceList" />
+            android:entries="@array/PriceList"
+            />
 
         <ListView
+            android:id="@+id/LocationListView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:entries="@array/LocationList" />
+            android:entries="@array/LocationList"
+            />
 
         <ListView
+            android:id="@+id/PriceDiffListView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:entries="@array/PriceDiffList" />
+            android:entries="@array/PriceDiffList"
+            />
     </LinearLayout>
 
 </LinearLayout>
