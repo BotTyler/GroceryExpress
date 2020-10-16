@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ListActivity extends AppCompatActivity {
 public static final Item[] list = {
@@ -99,6 +100,8 @@ public static final Item[] list = {
 
                     Log.d("PRINTNOT","Name="+name.getText().toString()+" Price="+price.getText().toString()+" Location="+location.getText().toString());
                     Intent intent = new Intent(ListActivity.this, NearbyStores.class);
+                    Toast toast = Toast.makeText(getApplicationContext(),"Starting NearbyStores Activity", Toast.LENGTH_LONG);
+                    toast.show();
                     startActivity(intent);
                 }
             });
@@ -114,13 +117,17 @@ public static final Item[] list = {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ListActivity.this, AddItem.class);
+                Toast toast = Toast.makeText(getApplicationContext(),"Starting AddItem Activity", Toast.LENGTH_LONG);
+                toast.show();
                 startActivity(intent);
             }
         });
 
     }
 
-    public void itemBackBtnOnClick(View view) {
+    public void BackOnItemClick(View view) {
+        Toast toast = Toast.makeText(getApplicationContext(),"Returning to MainActivity", Toast.LENGTH_LONG);
+        toast.show();
         finish();
     }
 }

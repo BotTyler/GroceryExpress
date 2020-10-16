@@ -23,6 +23,7 @@ public class AddList extends AppCompatActivity {
         addListButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 toast.show();
+                finish();
             }
         });
 

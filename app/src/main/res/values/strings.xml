@@ -5,6 +5,7 @@
     <string name="price">Price $</string>
     <string name="location">Location</string>
     <string name="price_diff">Price Diff</string>
+    <string name="backBtnText">Back</string>
     <string-array name="NameList">
         <item>Walmart</item>
         <item>Cosco</item>
