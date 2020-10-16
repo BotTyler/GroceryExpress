@@ -18,9 +18,10 @@
         android:textSize="50dp" />
 
     <ListView
+        android:id="@+id/GroceryListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:entries="@array/ItemList"
+        android:entries="@array/GroceryList"
         android:layout_weight="1"/>
 
 
