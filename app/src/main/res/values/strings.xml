@@ -39,4 +39,5 @@
         <item>Grocery Items</item>
         <item>Snacks</item>
     </string-array>
+    <string name="ListName">NullName</string>
 </resources>
