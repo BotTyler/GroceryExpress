@@ -1,5 +1,26 @@
 <resources>
     <string name="app_name">GroceryExpress</string>
+    <string name="info_name">Info</string>
+    <string name="store">Store</string>
+    <string name="price">Price $</string>
+    <string name="location">Location</string>
+    <string name="price_diff">Price Diff</string>
+    <string-array name="NameList">
+        <item>Walmart</item>
+        <item>Cosco</item>
+    </string-array>
+    <string-array name="PriceList">
+        <item>$5.00</item>
+        <item>$4.89</item>
+    </string-array>
+    <string-array name="LocationList">
+        <item>5800 US Hwy 98</item>
+        <item>10921  Causeway</item>
+    </string-array>
+    <string-array name="PriceDiffList">
+        <item>+$0.11</item>
+        <item>+$0.00</item>
+    </string-array>
     <string name="CreateNewListBtnText">Create List</string>
     <string name="ListName">NullName</string>
     <string name="AddItemBtnText">Add Item</string>

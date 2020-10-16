@@ -15,16 +15,12 @@
         android:layout_marginBottom="25dp"
         android:text="@string/app_name"
         android:textColor="@color/TitleColor"
-        android:textSize="50dp"
-        />
+        android:textSize="50dp" />
 
     <ListView
-        android:id="@+id/GroceryListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:entries="@array/GroceryList"
+        android:entries="@array/ItemList"
         android:layout_weight="1"/>
 
 
