@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">GroceryExpress</string>
+    <string name="CreateNewListBtnText">Create List</string>
+    <string-array name="ItemList">
+        <item>Tech Items</item>
+        <item>Grocery Items</item>
+        <item>Snacks</item>
+        <item>Tech Items</item>
+        <item>Grocery Items</item>
+        <item>Snacks</item>
+        <item>Tech Items</item>
+        <item>Grocery Items</item>
+        <item>Snacks</item>
+        <item>Tech Items</item>
+        <item>Grocery Items</item>
+        <item>Snacks</item>
+        <item>Tech Items</item>
+        <item>Grocery Items</item>
+        <item>Snacks</item>
+        <item>Tech Items</item>
+        <item>Grocery Items</item>
+        <item>Snacks</item>
+        <item>Tech Items</item>
+        <item>Grocery Items</item>
+        <item>Snacks</item>
+        <item>Tech Items</item>
+        <item>Grocery Items</item>
+        <item>Snacks</item>
+        <item>Tech Items</item>
+        <item>Grocery Items</item>
+        <item>Snacks</item>
+        <item>Tech Items</item>
+        <item>Grocery Items</item>
+        <item>Snacks</item>
+        <item>Tech Items</item>
+        <item>Grocery Items</item>
+        <item>Snacks</item>
+        <item>Tech Items</item>
+        <item>Grocery Items</item>
+        <item>Snacks</item>
+    </string-array>
+</resources>
