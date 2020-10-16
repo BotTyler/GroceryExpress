@@ -23,7 +23,10 @@
     </string-array>
     <string name="CreateNewListBtnText">Create List</string>
     <string name="ListName">NullName</string>
+    <string name="AddItemText">Add Item To List</string>
     <string name="AddItemBtnText">Add Item</string>
+    <string name="AddListText">Create a New List</string>
+    <string name="AddListBtnText">Create List</string>
     <string-array name="GroceryList">
         <item>Tech Items</item>
         <item>Grocery Items</item>

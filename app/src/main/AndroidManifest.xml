@@ -9,6 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".AddList"></activity>
+        <activity android:name=".AddItem" />
         <activity android:name=".NearbyStores" />
         <activity android:name=".ListActivity" />
         <activity android:name=".MainActivity">

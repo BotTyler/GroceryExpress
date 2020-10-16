@@ -6,10 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
     public static final String gListNameID = "GROCERY_LIST_NAME";
+    private Button addList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,5 +27,15 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         groceryListView.setOnItemClickListener(itemClickListener);
+
+        addList = (Button)findViewById(R.id.addListButton);
+
+        addList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, AddList.class);
+                startActivity(intent);
+            }
+        });
     }
 }

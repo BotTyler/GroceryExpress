@@ -9,6 +9,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -18,6 +19,7 @@ public class ListActivity extends AppCompatActivity {
 public static final Item[] list = {
         new Item("Graphics Card"),new Item("Soccer Ball", 6.54),new Item("Football", "Walmart"),new Item("Notebooks", 555.23, "costco"),new Item("Pens/Pencils")
 };
+    private Button addItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +104,15 @@ public static final Item[] list = {
             itemListView.addView(tr);
         }
 
+        addItem = (Button)findViewById(R.id.addItemButton);
 
+        addItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ListActivity.this, AddItem.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
