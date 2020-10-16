@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 public class ListActivity extends AppCompatActivity {
 public static final Item[] list = {
-        new Item("Graphics Card"),new Item("Soccer Ball", 6.54),new Item("Football", "Walmart"),new Item("Notebooks", 555.23, "costco"),new Item("Pens/Pencils")
+        new Item("Graphics Card"),new Item("Soccer Ball", 6.54),new Item("Football", "Walmart"),new Item("Notebooks", 555.23, "Costco"),new Item("Pens/Pencils")
 };
 
     @Override
@@ -25,6 +25,8 @@ public static final Item[] list = {
         setContentView(R.layout.activity_list);
         TextView ListTitle = (TextView)findViewById(R.id.ListTitle);
         //ArrayAdapter<Item> itemList = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
+
+
         TableRow tr = new TableRow(this);
 
         TableLayout itemListView = (TableLayout)findViewById(R.id.ItemLayout);
@@ -94,6 +96,8 @@ public static final Item[] list = {
                       TextView location = (TextView)test.getChildAt(2);
 
                     Log.d("PRINTNOT","Name="+name.getText().toString()+" Price="+price.getText().toString()+" Location="+location.getText().toString());
+                    Intent intent = new Intent(ListActivity.this, NearbyStores.class);
+                    startActivity(intent);
                 }
             });
             tr.addView(location);
@@ -106,4 +110,7 @@ public static final Item[] list = {
 
     }
 
+    public void itemBackBtnOnClick(View view) {
+        finish();
+    }
 }

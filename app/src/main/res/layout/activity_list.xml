@@ -30,7 +30,7 @@
     >
 </TableLayout>
 <LinearLayout
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
     <TextView
@@ -45,13 +45,29 @@
         android:text="$1236412345"
         android:layout_gravity="center"/>
 </LinearLayout>
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
     <Button
+        android:id="@+id/ListBackBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_weight="1"
+        android:layout_marginBottom="25dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/BackText"
+        android:onClick="itemBackBtnOnClick"/>
+    <Button
+        android:id="@+id/AddItemBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
         android:layout_marginBottom="25dp"
         android:layout_marginTop="25dp"
         android:text="@string/AddItemBtnText"/>
+</LinearLayout>
 
 </LinearLayout>
