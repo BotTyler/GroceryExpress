@@ -1,3 +1,4 @@
+
 package edu.floridapoly.mobiledeviceapp.fall2020.groceryexpress;
 
 public class Item {
@@ -37,6 +38,9 @@ public class Item {
         fString += price != 0.0f ? String.format("%-15s", "$"+price) : String.format("%-15s","");
         fString += location != null? String.format("%-50s", location) : String.format("%-50s","");
         return fString;
+    }
+    public Item(){
+
     }
 
     public Item(String name){

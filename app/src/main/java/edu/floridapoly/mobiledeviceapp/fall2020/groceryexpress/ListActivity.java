@@ -3,6 +3,7 @@ package edu.floridapoly.mobiledeviceapp.fall2020.groceryexpress;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -26,6 +27,14 @@ public static final Item[] list = {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
+
+
+        ListView listView = findViewById(R.id.ItemListView);
+
+       /* View v = new View(this);
+        v.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, 3));
+        v.setBackgroundColor(Color.rgb(51, 51, 51));
+
         TextView ListTitle = (TextView)findViewById(R.id.ListTitle);
         //ArrayAdapter<Item> itemList = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
 
@@ -60,8 +69,15 @@ public static final Item[] list = {
         tr.addView(lTitle);
 
         itemListView.addView(tr);
+        itemListView.addView(v);
+
 
         for(Item temp : list){
+
+            View listLine = new View(this);
+            v.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, 2));
+            v.setBackgroundColor(Color.rgb(51, 51, 51));
+
             tr = new TableRow(this);
             tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,TableRow.LayoutParams.WRAP_CONTENT));
 
@@ -109,7 +125,13 @@ public static final Item[] list = {
 
 
             itemListView.addView(tr);
+            itemListView.addView(listLine);
+
+
+
         }
+
+        */
 
         addItem = (Button)findViewById(R.id.addItemButton);
 
