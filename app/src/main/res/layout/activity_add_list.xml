@@ -21,7 +21,7 @@
         android:textSize="36sp" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/AddListNameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="5sp"

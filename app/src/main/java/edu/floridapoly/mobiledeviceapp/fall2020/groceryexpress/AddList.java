@@ -2,9 +2,12 @@ package edu.floridapoly.mobiledeviceapp.fall2020.groceryexpress;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.opengl.EGL14;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 public class AddList extends AppCompatActivity {
@@ -17,12 +20,13 @@ public class AddList extends AppCompatActivity {
         setContentView(R.layout.activity_add_list);
 
         addListButton = (Button)findViewById(R.id.addListButton);
+        EditText name = findViewById(R.id.AddListNameEditText);
 
-        Toast toast = Toast.makeText(this,"Creates a new list", Toast.LENGTH_SHORT);
 
         addListButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                toast.show();
+                MainActivity.myDB.listDao().insertList(new ListEntity(name.getText().toString()));
+                setResult(RESULT_OK);
                 finish();
             }
         });

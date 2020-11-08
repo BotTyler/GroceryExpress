@@ -1,27 +1,25 @@
 package edu.floridapoly.mobiledeviceapp.fall2020.groceryexpress;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
 public class ListActivity extends AppCompatActivity {
-public static final Item[] list = {
-        new Item("Graphics Card"),new Item("Soccer Ball", 6.54),new Item("Football", "Walmart"),new Item("Notebooks", 555.23, "Costco"),new Item("Pens/Pencils")
-};
+
     private Button addItem;
+    public static final String ITEM_ID = "ITEM_ID";
+    private ListView itemsView;
+    private int listId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +27,26 @@ public static final Item[] list = {
         setContentView(R.layout.activity_list);
 
 
-        ListView listView = findViewById(R.id.ItemListView);
+        Intent intent = getIntent();
+
+
+        listId = intent.getIntExtra(MainActivity.gListID, -1);
+        String listName = intent.getStringExtra(MainActivity.gListNameID);
+        if(listId == -1 || listName == null){
+            finish();
+        }
+
+
+        TextView listNameTextView = findViewById(R.id.ListTitle);
+        itemsView = findViewById(R.id.ItemListView);
+
+        listNameTextView.setText(listName);
+
+        List<ItemEntity> itemsEntities = MainActivity.myDB.itemDao().getAllItemsFromListID(listId);
+
+        ArrayAdapter<ItemEntity> lists = new ArrayAdapter<ItemEntity>(this, android.R.layout.simple_list_item_1, itemsEntities);
+        itemsView.setAdapter(lists);
+        // title needs  to be changed as well as check the id of the item change it in the other to make sure
 
        /* View v = new View(this);
         v.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, 3));
@@ -139,17 +156,28 @@ public static final Item[] list = {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ListActivity.this, AddItem.class);
-                Toast toast = Toast.makeText(getApplicationContext(),"Starting AddItem Activity", Toast.LENGTH_LONG);
-                toast.show();
-                startActivity(intent);
+                intent.putExtra(ITEM_ID, listId);
+                startActivityForResult(intent, 1);
             }
         });
 
     }
 
     public void BackOnItemClick(View view) {
-        Toast toast = Toast.makeText(getApplicationContext(),"Returning to MainActivity", Toast.LENGTH_LONG);
-        toast.show();
+
         finish();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
+        if(requestCode == 1 && resultCode == RESULT_OK){
+            List<ItemEntity> itemEntities = MainActivity.myDB.itemDao().getAllItemsFromListID(listId);
+
+            ArrayAdapter<ItemEntity> items = new ArrayAdapter<ItemEntity>(this, android.R.layout.simple_list_item_1, itemEntities);
+            itemsView.setAdapter(items);
+
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }
