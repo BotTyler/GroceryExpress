@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:id="@+id/MainActivityLayout">
 
     <TextView
         android:layout_width="wrap_content"
@@ -17,7 +18,9 @@
         android:textColor="@color/TitleColor"
         android:textSize="50dp" />
 
-    <ListView
+    <!--<ListView-->
+    <com.baoyz.swipemenulistview.SwipeMenuListView
+
         android:id="@+id/GroceryListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

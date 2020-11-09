@@ -9,4 +9,10 @@
     <color name="white">#FFFFFFFF</color>
     <color name="TitleColor">#22A21A</color>
     <color name="AppBackground">#E9F1FF</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#2f333f</color>
+    <color name="bluelight">#49acd5</color>
+    <color name="green">#45bc62</color>
+    <color name="orange">#eaad43</color>
+    <color name="colorAccent">#ff4081</color>
 </resources>

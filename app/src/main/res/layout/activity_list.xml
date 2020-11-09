@@ -18,21 +18,16 @@
         android:text="@string/ListName"
         android:textColor="@color/TitleColor"
         android:textSize="50sp" />
-    <ListView
+
+    <com.baoyz.swipemenulistview.SwipeMenuListView
         android:id="@+id/ItemListView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:entries="@array/GroceryList"
-        android:layout_weight="1"/>
-<!--<TableLayout
-    android:id="@+id/ItemLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:stretchColumns="3"
-    android:layout_weight="1"
-    android:layout_marginRight="10dp"
-    android:layout_marginLeft="10dp" >
-</TableLayout>-->
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        />
+
 <LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -45,6 +40,7 @@
         android:layout_gravity="left"
         android:textSize="25dp"/>
     <TextView
+        android:id="@+id/TotalListPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="$1236412345"

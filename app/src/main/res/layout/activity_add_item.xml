@@ -30,6 +30,16 @@
         android:layout_marginHorizontal="5sp"
         android:layout_marginVertical="30sp"
         android:textAlignment="center" />
+    <EditText
+        android:id="@+id/editTextItemPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="ITEM PRICE"
+        android:inputType="numberDecimal"
+        android:layout_marginHorizontal="5sp"
+        android:layout_marginVertical="30sp"
+        android:textAlignment="center" />
 
     <Button
         android:id="@+id/addItemButton"

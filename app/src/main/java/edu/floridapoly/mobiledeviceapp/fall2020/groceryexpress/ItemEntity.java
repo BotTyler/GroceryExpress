@@ -92,7 +92,7 @@ public class ItemEntity {
 
 @Dao
 interface ItemDao{
-    @Query("SELECT * FROM Items where List_id = :ListId")
+    @Query("SELECT * FROM Items where List_id = :ListId ORDER BY Item_name ASC")
     List<ItemEntity> getAllItemsFromListID(int ListId);
 
     @Query("SELECT * FROM Items")
@@ -110,7 +110,16 @@ interface ItemDao{
     @Delete
     void delete(ItemEntity itemEntity);
 
-    @Query("DELETE FROM Items WHERE List_id=List_id") // careful this will delete everything in the list
-    void deleteAll();
+    @Query("DELETE FROM Items WHERE List_id=:ListId") // careful this will delete everything in the list
+    void deleteAll(int ListId);
+
+    @Query("Delete FROM items")
+    void DeleteAll();
+
+    @Query("SELECT SUM(Item_price) FROM Items WHERE List_id=:ListId")
+    double sumOfPrice(int ListId);
+
+    @Update
+    void update(ItemEntity itemEntity);
 }
 

@@ -46,7 +46,7 @@ public class ListEntity {
 @Dao
 interface ListDao {
 
-    @Query("SELECT * FROM list")
+    @Query("SELECT * FROM list ORDER BY list_Name ASC")
     List<ListEntity> getAllList();
 
     @Query("DELETE FROM list") // careful this will delete everything in a table
@@ -63,6 +63,9 @@ interface ListDao {
 
     @Delete
     void delete(ListEntity listEntity);
+
+    @Update
+    void update(ListEntity listEntity);
 
 
 }
