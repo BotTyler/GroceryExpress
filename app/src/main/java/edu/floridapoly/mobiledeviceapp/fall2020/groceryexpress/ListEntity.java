@@ -13,6 +13,9 @@ public class ListEntity {
     @ColumnInfo(name = "List_id")
     private int id;
 
+    @ColumnInfo(name="List_fav")
+    private int favorite;
+
     @ColumnInfo(name = "list_Name")
     private String listName;
 
@@ -32,6 +35,14 @@ public class ListEntity {
         this.listName = listName;
     }
 
+    public int getFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(int favorite) {
+        this.favorite = favorite;
+    }
+
     public ListEntity(){}
 
     public ListEntity(String name){
@@ -46,7 +57,7 @@ public class ListEntity {
 @Dao
 interface ListDao {
 
-    @Query("SELECT * FROM list ORDER BY list_Name ASC")
+    @Query("SELECT * FROM list ORDER BY List_fav DESC")
     List<ListEntity> getAllList();
 
     @Query("DELETE FROM list") // careful this will delete everything in a table

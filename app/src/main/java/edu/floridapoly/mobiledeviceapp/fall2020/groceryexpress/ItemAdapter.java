@@ -11,10 +11,10 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class MyAdapter extends BaseAdapter {
+public class ItemAdapter extends BaseAdapter {
     Context context;
     List<ItemEntity> rowData;
-    public MyAdapter(Context context, List<ItemEntity> items) {
+    public ItemAdapter(Context context, List<ItemEntity> items) {
         this.context = context;
         this.rowData = items;
     }

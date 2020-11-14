@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ListActivity">
+    tools:context=".ListActivity"
+    android:background="@color/colorPrimaryDark">
 
     <TextView
         android:id="@+id/ListTitle"
@@ -38,15 +39,16 @@
         android:layout_height="wrap_content"
         android:text="Estimated Total"
         android:layout_gravity="left"
-        android:textSize="25dp"/>
+        android:textSize="25dp"
+        android:textColor="@color/lightgreen"/>
     <TextView
         android:id="@+id/TotalListPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="$1236412345"
         android:layout_gravity="center"
         android:textSize="25dp"
-        android:layout_marginLeft="20dp"/>
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/lightgreen"/>
 </LinearLayout>
 <LinearLayout
     android:layout_width="match_parent"
@@ -61,7 +63,9 @@
         android:layout_marginBottom="25dp"
         android:text="@string/backBtnText"
         android:layout_weight="1"
-        android:onClick="BackOnItemClick"/>
+        android:onClick="BackOnItemClick"
+        android:background="@drawable/buttonstyle"
+        android:textColor="@color/white"/>
     <Button
         android:id="@+id/addItemButton"
         android:layout_width="wrap_content"
@@ -70,7 +74,9 @@
         android:layout_marginTop="25dp"
         android:layout_marginBottom="25dp"
         android:text="@string/AddItemBtnText"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:background="@drawable/buttonstyle"
+        android:textColor="@color/white"/>
 </LinearLayout>
 
 </LinearLayout>

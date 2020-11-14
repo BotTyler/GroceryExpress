@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".AddList">
+    tools:context=".AddList"
+    android:background="@color/colorPrimaryDark">
 
     <TextView
         android:id="@+id/title4"
@@ -29,7 +30,10 @@
         android:ems="10"
         android:hint="LIST NAME"
         android:inputType="textPersonName"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:backgroundTint="@color/white"/>
 
     <Button
         android:id="@+id/addListButton"
@@ -37,5 +41,8 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="5sp"
         android:layout_marginVertical="30sp"
-        android:text="@string/AddListBtnText" />
+        android:text="@string/AddListBtnText"
+        android:background="@drawable/buttonstyle"
+        android:textColor="@color/white"
+        />
 </LinearLayout>

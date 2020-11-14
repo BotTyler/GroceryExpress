@@ -2,34 +2,40 @@ package edu.floridapoly.mobiledeviceapp.fall2020.groceryexpress;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.text.PrecomputedTextCompat;
 
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.PrecomputedText;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.baoyz.swipemenulistview.SwipeMenu;
 import com.baoyz.swipemenulistview.SwipeMenuCreator;
 import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
-import com.google.android.material.snackbar.Snackbar;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
 import java.util.List;
+
+import javax.xml.transform.Result;
 
 import static edu.floridapoly.mobiledeviceapp.fall2020.groceryexpress.MainActivity.gListID;
 import static edu.floridapoly.mobiledeviceapp.fall2020.groceryexpress.MainActivity.gListNameID;
 
 public class ListActivity extends AppCompatActivity {
+
+
 
     private Button addItem;
     public static final String ITEM_ID = "ITEM_ID";
@@ -45,6 +51,7 @@ public class ListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list);
         myDialog = new Dialog(this);
 
+
         Intent intent = getIntent();
         listId = intent.getIntExtra(gListID, -1);
         String listName = intent.getStringExtra(gListNameID);
@@ -56,6 +63,10 @@ public class ListActivity extends AppCompatActivity {
         TextView listNameTextView = findViewById(R.id.ListTitle);
         itemsView = (SwipeMenuListView)findViewById(R.id.ItemListView);
         listNameTextView.setText(listName);
+
+
+        updateItems();
+
 
         // creating menu for the swiping motions
         SwipeMenuCreator creator = new SwipeMenuCreator(){
@@ -91,6 +102,8 @@ public class ListActivity extends AppCompatActivity {
             }
         };
         itemsView.setMenuCreator(creator);
+
+
         itemsView.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
@@ -134,7 +147,6 @@ public class ListActivity extends AppCompatActivity {
             }
         });
 
-        updateItems();
 
         addItem = (Button)findViewById(R.id.addItemButton);
 
@@ -146,6 +158,11 @@ public class ListActivity extends AppCompatActivity {
                 startActivityForResult(intent, 1);
             }
         });
+
+
+
+
+
 
     }
 
@@ -163,12 +180,11 @@ public class ListActivity extends AppCompatActivity {
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
-
     public void updateItems(){
         List<ItemEntity> itemEntities = MainActivity.myDB.itemDao().getAllItemsFromListID(listId);
         double price = MainActivity.myDB.itemDao().sumOfPrice(listId);
        // ArrayAdapter<ItemEntity> items = new ArrayAdapter<ItemEntity>(this, android.R.layout.simple_list_item_1, itemEntities);
-        MyAdapter items = new MyAdapter(this, itemEntities);
+        ItemAdapter items = new ItemAdapter(this, itemEntities);
         totalPrice.setText("$"+price);
         itemsView.setAdapter(items);
     }
@@ -199,4 +215,5 @@ public class ListActivity extends AppCompatActivity {
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         myDialog.show();
     }
+
 }

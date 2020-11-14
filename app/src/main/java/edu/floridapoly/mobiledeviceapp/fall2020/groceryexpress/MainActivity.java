@@ -1,5 +1,6 @@
 package edu.floridapoly.mobiledeviceapp.fall2020.groceryexpress;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
@@ -9,14 +10,17 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Icon;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -31,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     public static final String gListNameID = "GROCERY_LIST_NAME";
     public static final String gListID = "GROCERY_LIST_ID";
     private Button addList;
-    private static SwipeMenuListView groceryListView;
+    public static SwipeMenuListView groceryListView;
     public static MyDatabase myDB;
     public Dialog myDialog;
     @Override
@@ -42,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         groceryListView = findViewById(R.id.GroceryListView);
         myDialog = new Dialog(this);
 
-
+        updateList();
 
         // creating menu for the swiping motions
         SwipeMenuCreator creator = new SwipeMenuCreator(){
@@ -69,8 +73,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         groceryListView.setMenuCreator(creator);
 
 
-        updateList();
-        boolean isHoldingList = false;
+
 
         AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
             @Override
@@ -128,6 +131,10 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         });
     }
 
+
+
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 
@@ -139,8 +146,11 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
     public void updateList(){
         List<ListEntity> listEntities = myDB.listDao().getAllList();
-        ArrayAdapter<ListEntity> lists = new ArrayAdapter<ListEntity>(this, android.R.layout.simple_list_item_1, listEntities);
+        ListAdapter lists = new ListAdapter(this, listEntities);
+        ArrayAdapter<ListEntity> l = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, listEntities);
         groceryListView.setAdapter(lists);
+
+
     }
 
     @Override
