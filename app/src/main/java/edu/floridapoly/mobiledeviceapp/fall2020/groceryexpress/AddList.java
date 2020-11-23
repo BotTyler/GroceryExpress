@@ -25,9 +25,13 @@ public class AddList extends AppCompatActivity {
 
         addListButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                MainActivity.myDB.listDao().insertList(new ListEntity(name.getText().toString()));
-                setResult(RESULT_OK);
-                finish();
+                if(name.getText().toString().isEmpty()){
+                    Toast.makeText(AddList.this, "PLEASE ENTER A VALID LIST NAME", Toast.LENGTH_SHORT).show();
+                }else {
+                    MainActivity.myDB.listDao().insertList(new ListEntity(name.getText().toString()));
+                    setResult(RESULT_OK);
+                    finish();
+                }
             }
         });
 

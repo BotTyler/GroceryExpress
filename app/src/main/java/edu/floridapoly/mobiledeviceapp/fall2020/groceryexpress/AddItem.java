@@ -2,47 +2,37 @@ package edu.floridapoly.mobiledeviceapp.fall2020.groceryexpress;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+
 public class AddItem extends AppCompatActivity {
 
-    Button addItemButton;
-    TextView htmlText;
-    Button htmlBtn;
+    private Button addItemButton;
+    private Button findLocationForItems;
+    private int listID;
+    private ListView listView;
+    private int preSelectedIndex = -1;
+    private List<WebObject> list;
+    private EditText itemName, itemMinPrice;
 
-    public class websiteHandler extends AsyncTask<Void, Void, Void>{
-        String words;
-        @Override
-        protected Void doInBackground(Void... params) {
-            try{
-                String url = "https://shopping.google.com/search?q=eggs";
-                Document d = Jsoup.connect(url).get();
-                words = d.html();
-            }catch (Exception e){
-                Log.d("expresserror", e.getMessage());
-                Log.d("expresserror", "Error has occurred");
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            htmlText.setText(words);
-
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +40,16 @@ public class AddItem extends AppCompatActivity {
         setContentView(R.layout.activity_add_item);
 
         addItemButton = (Button)findViewById(R.id.addItemButton);
-        EditText itemName = findViewById(R.id.editTextTextPersonName);
-        EditText itemPrice = findViewById(R.id.editTextItemPrice);
+        findLocationForItems = (Button)findViewById(R.id.LocateItemButton);
+        itemName = findViewById(R.id.editTextTextPersonName);
+        listView = findViewById(R.id.addItemToListListView);
+        itemMinPrice = findViewById(R.id.AddItemMinPrice);
+        preSelectedIndex = -1;
+
+
         Intent intent = getIntent();
 
-        int listID = intent.getIntExtra(ListActivity.ITEM_ID, -1);
+        this.listID = intent.getIntExtra(ListActivity.ITEM_ID, -1);
         if(listID == -1){
             // list is not established
             setResult(RESULT_CANCELED);
@@ -64,27 +59,111 @@ public class AddItem extends AppCompatActivity {
 
         addItemButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Log.d("DB", itemPrice.getText().toString());
+                if (itemName.getText().toString().isEmpty()) {
+                    Toast.makeText(AddItem.this, "PLEASE ENTER A VALID ITEM NAME", Toast.LENGTH_SHORT).show();
 
-                double price = itemPrice.getText().toString().equals("") ? 0.0:  Double.parseDouble(itemPrice.getText().toString());
-                MainActivity.myDB.itemDao().insertItem(new ItemEntity(listID, itemName.getText().toString(), price));
-                setResult(RESULT_OK);
-                finish();
+                } else {
+
+                    ArrayList<WebObject> adapter = new ArrayList<WebObject>();
+
+                    if (preSelectedIndex == -1) {
+                        double minPrice = itemMinPrice.getText().toString().isEmpty() ? 0.0 : Double.parseDouble(itemMinPrice.getText().toString());
+                        Product htmlLink = new Product(AddItem.this, new ItemEntity(listID, itemName.getText().toString()), minPrice);
+                        htmlLink.execute(1, 1);
+                    } else {
+
+                        ItemEntity item = new ItemEntity(listID, itemName.getText().toString(), list.get(preSelectedIndex).getPrice(), list.get(preSelectedIndex).getLocation(), list.get(preSelectedIndex).getUrl());
+                        item.setWebName(list.get(preSelectedIndex).getName());
+                        item.setAltPrice(list.get(preSelectedIndex).getAltPrice());
+                        MainActivity.myDB.itemDao().insertItem(item);
+                        setResult(RESULT_OK);
+
+                        finish();
+                    }
+
+                    for (WebObject a : adapter)
+                        Log.d("output2", a.toString());
+                    //
+                    setResult(RESULT_OK);
+                    //finish();
+                }
             }
         });
 
 
-
-
-
-        htmlText = findViewById(R.id.htmlplaceholder);
-        htmlBtn = findViewById(R.id.testHTMLBtn);
-
-        htmlBtn.setOnClickListener(new View.OnClickListener() {
+        findLocationForItems.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new websiteHandler().execute();
+                if(!itemName.getText().toString().isEmpty()){
+
+
+                preSelectedIndex = -1;
+                double minPrice = itemMinPrice.getText().toString().isEmpty() ? 0.0 : Double.parseDouble(itemMinPrice.getText().toString());
+                Product htmlLink = new Product(AddItem.this,itemName.getText().toString(), listView, minPrice);
+                htmlLink.execute(20, 1);
+                //Log.d("Outp", htmlLink.getWebList().toString());
+
+                //String temp = htmlLink.getHTML("https://shopping.google.com/search?q=eggs");
+                //htmlText.setText(temp);
+                /*new Thread(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        String word = "";
+                        try {
+                            Document doc = Jsoup.connect("https://shopping.google.com/search?q=eggs").timeout(6000).get();
+                            word = doc.html();
+                        }catch (Exception e){}
+                        String finalWord = word;
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                htmlText.setText(finalWord);
+                            }
+                        });
+                    }
+                });
+                */
+                }else{
+                    Toast.makeText(AddItem.this, "PLEASE ENTER A VALID ITEM NAME", Toast.LENGTH_SHORT).show();
+
+                }
+
             }
         });
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                WebObjectListAdapter adapter = ((WebObjectListAdapter)adapterView.getAdapter());
+                list = adapter.getItems();
+
+                if(i == preSelectedIndex){
+                    list.get(i).setSelected(!list.get(i).isSelected());
+                    preSelectedIndex = list.get(i).isSelected() == true ? i : -1;
+                }else if(preSelectedIndex > -1 && preSelectedIndex != i){
+                    list.get(preSelectedIndex).setSelected(false);
+                    list.get(i).setSelected(true);
+                    preSelectedIndex = i;
+                }else if(preSelectedIndex == -1 && i > -1){
+                    list.get(i).setSelected(true);
+                    preSelectedIndex = i;
+                }
+               /* list.get(i).setSelected(true);
+
+                if (preSelectedIndex > -1){
+                    list.get(preSelectedIndex).setSelected(false);
+
+                }
+                preSelectedIndex = i;
+                */
+
+                adapter.updateRecords(list);
+                Log.d("Select", preSelectedIndex + "");
+            }
+        });
+
     }
+
 }

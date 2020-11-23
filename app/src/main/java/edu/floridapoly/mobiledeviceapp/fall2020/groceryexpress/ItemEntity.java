@@ -20,11 +20,22 @@ public class ItemEntity {
     @ColumnInfo(name = "Item_name")
     private String name;
 
+    @ColumnInfo(name = "Item_Web_Name")
+    private String webName;
+
     @ColumnInfo(name = "Item_location")
     private String location;
 
     @ColumnInfo(name = "Item_price")
     private double price;
+
+    @ColumnInfo(name = "Item_Alt_Price")
+    private String altPrice;
+
+    @ColumnInfo(name = "Item_URL")
+    private String url;
+
+
 
     public int getItem_id() {
         return Item_id;
@@ -55,6 +66,26 @@ public class ItemEntity {
     }
     public void setPrice(double price) {
         this.price = price;
+    }
+    public String getUrl() {
+        return url;
+    }
+    public void setUrl(String url) {
+        this.url = url;
+    }
+    public String getWebName() {
+        return webName;
+    }
+    public void setWebName(String webName) {
+        this.webName = webName;
+    }
+
+    public String getAltPrice() {
+        return altPrice;
+    }
+
+    public void setAltPrice(String altPrice) {
+        this.altPrice = altPrice;
     }
 
     @Override
@@ -87,6 +118,13 @@ public class ItemEntity {
         this.location = location;
         this.List_id = list_id;
 
+    }
+    public ItemEntity(int list_id, String name, double price, String location, String url){
+        this.name = name;
+        this.price = price;
+        this.location = location;
+        this.List_id = list_id;
+        this.url = url;
     }
 }
 

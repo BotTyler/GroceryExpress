@@ -22,6 +22,7 @@ public class ItemAdapter extends BaseAdapter {
     private class ViewHolder {
 
         TextView txtTitle;
+        TextView txtWebTitle;
         TextView txtPrice;
         TextView txtLocation;
     }
@@ -32,9 +33,10 @@ public class ItemAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.list_item, null);
             holder = new ViewHolder();
-            holder.txtPrice = (TextView) convertView.findViewById(R.id.PriceText);
-            holder.txtTitle = (TextView) convertView.findViewById(R.id.title);
-            holder.txtLocation = (TextView) convertView.findViewById(R.id.LocationText);
+            holder.txtPrice = (TextView) convertView.findViewById(R.id.ItemPrice);
+            holder.txtTitle = (TextView) convertView.findViewById(R.id.ItemTitle);
+            holder.txtWebTitle = (TextView)convertView.findViewById(R.id.ItemWebTitle);
+            holder.txtLocation = (TextView) convertView.findViewById(R.id.ItemLocation);
            // holder.imageView = (ImageView) convertView.findViewById(R.id.icon);
             convertView.setTag(holder);
         }
@@ -42,9 +44,21 @@ public class ItemAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         ItemEntity rowItem = (ItemEntity) getItem(position);
-        holder.txtPrice.setText("Price: "+rowItem.getPrice());
+        String price = "";
+        if(rowItem.getPrice() > 0.0){
+            price = "$" + rowItem.getPrice();
+
+        }else if(rowItem.getPrice() == 0.0 && !rowItem.getAltPrice().isEmpty()){
+            price = "$" + rowItem.getAltPrice();
+
+        }else{
+            price = "Error: Price Not Found";
+
+        }
+        holder.txtPrice.setText("$"+rowItem.getPrice());
         holder.txtLocation.setText("Location: " + rowItem.getLocation());
         holder.txtTitle.setText(rowItem.getName());
+        holder.txtWebTitle.setText(rowItem.getWebName());
 
         //holder.imageView.setImageResource(rowItem.getImageId());
         return convertView;

@@ -8,6 +8,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.PrecomputedText;
@@ -82,7 +83,7 @@ public class ListActivity extends AppCompatActivity {
 
                 SwipeMenuItem location = new SwipeMenuItem(getApplicationContext());
                 location.setBackground(new ColorDrawable(Color.rgb(59,131,247)));
-                location.setIcon(R.drawable.ic_location);
+                location.setIcon(R.drawable.ic_web_site);
                 location.setWidth(170);
                 menu.addMenuItem(location);
 
@@ -108,6 +109,7 @@ public class ListActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
                 switch (index){
+
                     case 0:
                         // delete button was pressed Prob should prompt for confirmation
                         ItemEntity item = (ItemEntity)itemsView.getItemAtPosition(position);
@@ -121,8 +123,9 @@ public class ListActivity extends AppCompatActivity {
                         updateItems();
                         break;
                     case 1:
-                        // i dont know what to do here but it here we can delete this part if we want to
-                      //  Log.d("DB", "location Clicked position="+position);
+                        ItemEntity item2 = (ItemEntity)itemsView.getItemAtPosition(position);
+                        Uri webpage = Uri.parse(item2.getUrl());
+                        startActivity(new Intent(Intent.ACTION_VIEW, webpage));
                         break;
                     case 2:
                        // Log.d("DB", "rename");

@@ -2,37 +2,58 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical">
+    android:orientation="horizontal">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1">
         <TextView
-        android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="10dp"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        android:layout_weight="1"
+            android:id="@+id/ItemTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_weight="1"
             />
         <TextView
-            android:id="@+id/PriceText"
+            android:id="@+id/ItemWebTitle"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingLeft="10dp"
-            android:textColor="@color/green"
-            android:textSize="15dp"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:layout_weight="1"
+            />
+
+
+            <!-- <TextView
+                 android:id="@+id/WebObjectCheapestPriceText"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:paddingLeft="10dp"
+                 android:textColor="@color/green"
+                 android:textSize="10sp"
+                 android:layout_weight="1"/> -->
+
+        <TextView
+            android:id="@+id/ItemLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16sp"
+            android:textColor="@color/locationcolor"
+            android:textSize="13sp"
             android:layout_weight="1"/>
     </LinearLayout>
     <TextView
-        android:id="@+id/LocationText"
+        android:id="@+id/ItemPrice"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="13dp"
-        android:textColor="@color/locationcolor"
-        android:textSize="12dp"
-        android:layout_weight="1"/>
-
+        android:layout_height="wrap_content"
+        android:textColor="@color/green"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_weight="2"/>
 
 </LinearLayout>

@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        myDB = Room.databaseBuilder(getApplicationContext(), MyDatabase.class, "listdb").allowMainThreadQueries().build();
+        myDB = Room.databaseBuilder(getApplicationContext(), MyDatabase.class, "listdb").fallbackToDestructiveMigration().allowMainThreadQueries().build();
         groceryListView = findViewById(R.id.GroceryListView);
         myDialog = new Dialog(this);
 

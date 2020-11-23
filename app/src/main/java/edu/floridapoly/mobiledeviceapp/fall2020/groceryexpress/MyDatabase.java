@@ -2,7 +2,7 @@ package edu.floridapoly.mobiledeviceapp.fall2020.groceryexpress;
 
 import androidx.room.*;
 
-@Database(entities = {ItemEntity.class,ListEntity.class}, version = 2)
+@Database(entities = {ItemEntity.class,ListEntity.class}, version = 5)
 public abstract class MyDatabase extends RoomDatabase{
 
     public abstract ItemDao itemDao();
