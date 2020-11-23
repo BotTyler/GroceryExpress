@@ -136,6 +136,9 @@ interface ItemDao{
     @Query("SELECT * FROM Items")
     List<ItemEntity> getAllItems();
 
+    @Query("Select * from Items where Item_id=:ItemID")
+    ItemEntity getItem(int ItemID);
+
     @Insert
     void insertAll(ItemEntity... items);
     

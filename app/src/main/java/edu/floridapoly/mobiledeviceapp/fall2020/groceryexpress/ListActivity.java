@@ -144,9 +144,10 @@ public class ListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(ListActivity.this, NearbyStores.class);
+                ItemEntity item = (ItemEntity)adapterView.getAdapter().getItem(i);
+                intent.putExtra("ITEM_ID", item.getItem_id());
 
-
-                startActivity(intent);
+                startActivityForResult(intent, 1);
             }
         });
 

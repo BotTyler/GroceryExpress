@@ -5,109 +5,145 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".NearbyStores">
+    tools:context=".AddItem"
+    android:background="@color/colorPrimaryDark"
+    >
 
     <TextView
-        android:id="@+id/Title"
+        android:id="@+id/LocationItemTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="25dp"
-        android:text="@string/info_name"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="8dp"
+        android:text="Null Item Name"
         android:textAlignment="center"
-        android:textColor="@color/TitleColor"
-        android:textSize="36sp" />
+        android:textColor="@color/white"
+        android:textSize="25sp" />
+    <TextView
+        android:id="@+id/LocationItemWebTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="5dp"
+        android:text="Null Item Name"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="19sp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <TextView
 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Current Price:"
+        android:textColor="@color/green"
+        android:textSize="17sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+        <TextView
+            android:id="@+id/LocationItemPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/green"
+            android:textSize="17sp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="5sp">
-
-
+        android:layout_marginTop="6dp">
         <TextView
-            android:id="@+id/Name"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="1dp"
-            android:text="@string/store"
-            android:textAlignment="center"
-            android:textSize="20sp" />
+            android:layout_gravity="center"
+            android:text="Current Location:"
+            android:textColor="@color/bluelight"
+            android:textSize="17sp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
         <TextView
-            android:id="@+id/Price"
-            android:layout_width="match_parent"
+            android:id="@+id/LocationCurrentLocation"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="1dp"
-            android:text="@string/price"
-            android:textAlignment="center"
-            android:textSize="20sp" />
-        <TextView
-            android:id="@+id/Location"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="1dp"
-            android:text="@string/location"
-            android:textAlignment="center"
-            android:textSize="20sp" />
-        <TextView
-            android:id="@+id/Price_Diff"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="1dp"
-            android:text="@string/price_diff"
-            android:textAlignment="center"
-            android:textSize="20sp" />
-
-
+            android:layout_gravity="center"
+            android:textColor="@color/bluelight"
+            android:textSize="17sp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
     </LinearLayout>
 
+
+
+        <EditText
+            android:id="@+id/LocationMinPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="MIN PRICE"
+            android:inputType="numberDecimal"
+            android:layout_marginHorizontal="5sp"
+            android:layout_marginVertical="10sp"
+            android:textAlignment="center"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/white"
+
+            />
+
+    <ListView
+        android:id="@+id/LocationWebObjectListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@color/white"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="1"
+        >
+
+    </ListView>
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="5sp">
-
-        <ListView
-            android:id="@+id/StoreListView"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+        >
+        <Button
+            android:id="@+id/LocationChangeBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5sp"
+            android:layout_marginVertical="30sp"
+            android:text="Change Location"
+            android:background="@drawable/buttonstyle"
+            android:textColor="@color/white"
             android:layout_weight="1"
-            android:entries="@array/NameList"
             />
-
-        <ListView
-            android:id="@+id/PriceListView"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+        <Button
+            android:id="@+id/LocationLocateItemBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5sp"
+            android:layout_marginVertical="30sp"
+            android:text="@string/locateText"
+            android:background="@drawable/buttonstyle"
+            android:textColor="@color/white"
             android:layout_weight="1"
-            android:entries="@array/PriceList"
-            />
 
-        <ListView
-            android:id="@+id/LocationListView"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:entries="@array/LocationList"
-            />
-
-        <ListView
-            android:id="@+id/PriceDiffListView"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:entries="@array/PriceDiffList"
             />
     </LinearLayout>
-
+    <!--<Button
+        android:id="@+id/testHTMLBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5sp"
+        android:layout_marginVertical="30sp"
+        android:text="Test Get Html"
+        android:background="@drawable/buttonstyle"
+        android:textColor="@color/white"
+        />-->
 </LinearLayout>

@@ -19,6 +19,13 @@ public class WebObject {
         this.location = location;
         this.altPrice = altPrice;
     }
+    public WebObject(String name, double price, String altPrice, String location, String url){
+        this.name = name;
+        this.price = price;
+        this.location = location;
+        this.altPrice = altPrice;
+        this.url = url;
+    }
 
     public String getName() {
         return name;
