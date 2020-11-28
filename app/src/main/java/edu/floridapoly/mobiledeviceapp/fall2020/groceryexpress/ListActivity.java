@@ -189,7 +189,7 @@ public class ListActivity extends AppCompatActivity {
         double price = MainActivity.myDB.itemDao().sumOfPrice(listId);
        // ArrayAdapter<ItemEntity> items = new ArrayAdapter<ItemEntity>(this, android.R.layout.simple_list_item_1, itemEntities);
         ItemAdapter items = new ItemAdapter(this, itemEntities);
-        totalPrice.setText("$"+price);
+        totalPrice.setText(String.format("$%.2f", price));
         itemsView.setAdapter(items);
     }
     public void ShowPopup(ItemEntity itemEntity) {

@@ -49,6 +49,8 @@ public class Product extends AsyncTask<Integer, Void, Integer>{
 
     }
 
+
+
     // use this when you want to get a list of obj back from the scraper
     // if minprice is not provided use -1
     public Product(Activity context, String itemName, ListView listView, double minPrice){
